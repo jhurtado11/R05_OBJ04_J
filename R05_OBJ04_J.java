@@ -1,15 +1,15 @@
-public final class MutableClass {
-  private Date date;
+public final class MutableClass { // Copy constructor
+  private final Date date;
  
-  public MutableClass(Date d) {
-    this.date = d;
+  public MutableClass(MutableClass mc)  {
+    this.date = new Date(mc.date.getTime());
   }
  
-  public void setDate(Date d) {
-    this.date = d;
+  public MutableClass(Date d) {
+    this.date = new Date(d.getTime());  // Make defensive copy
   }
  
   public Date getDate() {
-    return date;
+    return (Date) date.clone(); // Copy and return
   }
 }
